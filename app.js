@@ -1,7 +1,10 @@
 const express = require('express')
 const expressLayouts = require('express-ejs-layouts');
 
+const methodOverride = require('method-override');
+
 const indexRouter = require('./Routes/index');
+const contactRouter = require('./Routes/contacts');
 
 const connectMongoDB = require('./Helpers/dbConnection');
 
@@ -19,6 +22,8 @@ app.set('layout', 'Layouts/layout');
 
 app.use(expressLayouts);
 
+app.use(methodOverride('_method'));
+
 // Connect DB
 connectMongoDB(process.env.MONGO_URL);
 
@@ -29,6 +34,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use('/', indexRouter);
+app.use('/contacts', contactRouter);
 
 const port = process.env.PORT || 3000;
 

@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="header">
+        <h2>Contacts</h2>
+    
+        <a href="/contacts/new" class="btn btn-solid primary">Add Someone</a>
+    </div>
+
+    <% contacts.forEach(contact => { %>
+
+        <div class="card">
+            <div class="card-head">
+                <h4><%= contact.name %></h4>
+                <div class="card-options">
+                    <a href="/contacts/edit/<%= contact._id %>" class="btn"><i class="fas fa-pen"></i></a>
+                    <form action="/contacts/<%= contact._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn"><i class="fas fa-eraser"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <p class="note"><%= contact.note %></p>
+
+            <div class="card-content">
+                <p class="btn"><i class="fas fa-phone"></i><%= contact.phoneNumber %></p>
+
+                <% if (contact.email !== '') { %>
+                    <p class="btn"><i class="fas fa-envelope"></i><%= contact.email %></p>
+                <% } %>
+            </div>
+
+        </div>
+
+    <% }) %>
+</div>
