@@ -1,28 +1,32 @@
-<h2>Edit Contact Info</h2>
-
-<form action="/contacts/edit/<%= contact.id %>?_method=PUT" method="POST">
-
-    <div>
-        <label>Name</label>
-        <input type="text" name="name" value="<%= contact.name %>" placeholder="John"/>
-    </div>
-    
-    <div>
-        <label>Phone Number</label>
-        <input type="text" name="phoneNumber" value="<%= contact.phoneNumber %>" placeholder="00-0000-0000">
+<div class="container">
+    <div class="header">
+        <h2>Edit Contact Info</h2>
     </div>
 
-    <div>
-        <label>E-mail Address</label>
-        <input type="email" name="email" value="<%= contact.email %>" placeholder="john@gmail.com">    
-    </div>
+    <div class="card">
+        <form action="/contacts/edit/<%= contact.id %>?_method=PUT" method="POST">
 
-    <div>
-        <label>About this person</label>
-        <input type="text" name="note" value="<%= contact.note %>" placeholder="John is my friend">
+            <div>
+                <input type="text" name="name" value="<%= contact.name %>" placeholder="Name"/>
+            </div>
+            
+            <div>
+                <input type="text" name="phoneNumber" value="<%= contact.phoneNumber %>" placeholder="Phone number">
+            </div>
+        
+            <div>
+                <input type="email" name="email" value="<%= contact.email %>" placeholder="E-mail address">    
+            </div>
+        
+            <div>
+                <input type="text" name="note" value="<%= contact.note %>" placeholder="Something about this person">
+            </div>
+            
+            <div class="card-content">
+                <a href="/contacts" class="btn">Cancel</a>
+                <button type="submit" class="btn btn-solid primary">Save</button>
+            </div>
+        </form>
     </div>
+</div>
 
-    <a href="/contacts">Cancel</a>
-    <button type="submit">Save</button>
-    
-</form>

@@ -1,34 +1,44 @@
 <div class="container">
     <div class="header">
+        <p>Welcome, <%= username %></p>
+
         <h2>Contacts</h2>
     
         <a href="/contacts/new" class="btn btn-solid primary">Add Someone</a>
+
+        <a href="/users/logout" class="btn">Logout</a>
     </div>
 
-    <% contacts.forEach(contact => { %>
-
-        <div class="card">
-            <div class="card-head">
-                <h4><%= contact.name %></h4>
-                <div class="card-options">
-                    <a href="/contacts/edit/<%= contact._id %>" class="btn"><i class="fas fa-pen"></i></a>
-                    <form action="/contacts/<%= contact._id %>?_method=DELETE" method="POST">
-                        <button type="submit" class="btn"><i class="fas fa-eraser"></i></button>
-                    </form>
+    <% if (contacts.length > 0) { %>
+        <% contacts.forEach(contact => { %>
+    
+            <div class="card">
+                <div class="card-head">
+                    <h4><%= contact.name %></h4>
+                    <div class="card-options">
+                        <a href="/contacts/edit/<%= contact._id %>" class="btn"><i class="fas fa-pen"></i></a>
+                        <form action="/contacts/<%= contact._id %>?_method=DELETE" method="POST">
+                            <button type="submit" class="btn"><i class="fas fa-eraser"></i></button>
+                        </form>
+                    </div>
+                </div>
+    
+                <p class="note"><%= contact.note %></p>
+    
+                <div class="card-content">
+                    <p class="btn"><i class="fas fa-phone"></i><%= contact.phoneNumber %></p>
+    
+                    <% if (contact.email !== '') { %>
+                        <p class="btn"><i class="fas fa-envelope"></i><%= contact.email %></p>
+                    <% } %>
                 </div>
             </div>
+        <% }) %>
 
-            <p class="note"><%= contact.note %></p>
+    <% } else { %>
 
-            <div class="card-content">
-                <p class="btn"><i class="fas fa-phone"></i><%= contact.phoneNumber %></p>
-
-                <% if (contact.email !== '') { %>
-                    <p class="btn"><i class="fas fa-envelope"></i><%= contact.email %></p>
-                <% } %>
-            </div>
-
+        <div class="center">
+            <h5>You don't have any contacts yet. <a href="/users/logout">Add someone</a></h5>
         </div>
-
-    <% }) %>
+    <% } %>
 </div>

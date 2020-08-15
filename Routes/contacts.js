@@ -3,12 +3,13 @@ const Contact = require('../Models/Contact');
 
 const router = express.Router();
 
-// Homepage - GET /contacts
+// Contact List - GET /contacts
 router.get('/', async ( req, res ) => {
 
     try {
-        const contacts = await Contact.find();
-        res.render('Contacts/index', { contacts });
+        const contacts = await Contact.find({ user: req.user.id });
+        const username = req.user.name;
+        res.render('Contacts/index', { contacts, username });
 
     } catch (error) {
         console.log(error);
@@ -26,6 +27,8 @@ router.get('/new', ( req, res ) => {
 router.post('/new', async ( req, res ) => {
 
     try {
+        req.body.user = req.user.id;
+
         await Contact.create(req.body);
         res.redirect('/contacts');
 

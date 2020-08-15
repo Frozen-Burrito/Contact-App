@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="header">
+        <h2>Create Account</h2>
+
+        <%- include('../Partials/_form_messages.ejs') %>
+    </div>
+
+    <div class="card">
+        <form action="/users/signup" method="POST">
+
+            <div>
+                <input type="text" name="name" value="<%= typeof name != 'undefined' ? name : '' %>" placeholder="Name"/>
+            </div>
+            
+            <div>
+                <input type="email" name="email" value="<%= typeof email != 'undefined' ? email : '' %>" placeholder="Email Address">
+            </div>
+
+            <div>
+                <input type="password" name="password" value="<%= typeof password != 'undefined' ? password : '' %>" placeholder="Password">    
+            </div>
+
+            <div>
+                <input type="password" name="passwordConfirm" value="<%= typeof passwordConfirm != 'undefined' ? passwordConfirm : '' %>" placeholder="Password Confirm">
+            </div>
+
+            <div class="card-content">
+                <a href="/" class="btn">Cancel</a>
+                <button type="submit" class="btn btn-solid primary">Sign Up</button>
+            </div>
+
+            <div>
+                <p>Already have an account? <a href="/users/login">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+</div>

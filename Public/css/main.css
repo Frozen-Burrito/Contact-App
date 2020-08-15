@@ -1,11 +1,28 @@
 body {
     background-color: rgb(245, 245, 245);
 }
-h2 {
+
+h1 {
     margin: 2rem 0;
 
     text-transform: uppercase;
+    font-size: 4.2rem;
+    font-weight: normal;
+}
+
+h2 {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+    text-transform: uppercase;
     font-size: 4rem;
+    font-weight: normal;
+}
+
+h3 {
+    margin: 3rem 0;
+
+    font-size: 2rem;
     font-weight: normal;
 }
 
@@ -46,6 +63,15 @@ footer {
     margin: 3rem 0;
 }
 
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+}
+
 .btn {
     background-color: transparent;
     border: none;
@@ -62,15 +88,27 @@ footer {
     color: rgb(75, 144, 190);
 }
 
-.btn-solid.primary {
+.btn-solid {
     padding: .8rem 1.2rem;
 
-    background-color: rgb(75, 144, 190);
     border-radius: 5px;
-    border-bottom: 3px solid rgb(61, 123, 165);
-
-    color: rgb(240, 240, 240);
     font-size: 1.2rem;
+}
+
+.primary {
+    background-color: rgb(75, 144, 190);
+    border-bottom: 3px solid rgb(63, 128, 172);
+    color: rgb(240, 240, 240);
+}
+
+.secondary {
+    background-color: rgb(111, 157, 187);
+    border-bottom: 3px solid rgb(95, 137, 165);
+    color: rgb(240, 240, 240);
+}
+
+.btn-solid:hover {
+    color: rgb(255, 255, 255);
 }
 
 .card {
@@ -93,7 +131,7 @@ footer {
 
 .card .card-content {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
